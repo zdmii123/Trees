@@ -1,1 +1,16 @@
 
+ Node insertRec(Node root, String key) {
+       if (root == null) {
+           root = new Node(key);
+           return root;
+       }
+       if(root.key.compareTo(key) == 0){
+           root.freq = root.freq + 1;
+           return root;
+       }
+       else if (key.compareTo(root.key) < 0)
+           root.left = insertRec(root.left, key);
+       else
+           root.right = insertRec(root.right, key);
+       return root;
+   }
